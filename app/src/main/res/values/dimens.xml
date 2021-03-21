@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="little">4dp</dimen>
+    <dimen name="medium_8">8dp</dimen>
+    <dimen name="medium_16">16dp</dimen>
+    <dimen name="large">32dp</dimen>
+    <dimen name="medium_large">48dp</dimen>
+    <dimen name="extra_large">64dp</dimen>
+    <dimen name="little_1">1dp</dimen>
+
+    <dimen name="main_view_padding">10dp</dimen>
+    <dimen name="line_padding">10dp</dimen>
+    <dimen name="description_padding">10dp</dimen>
+    <dimen name="line_width">25dp</dimen>
+    <dimen name="peek_height">100dp</dimen>
+</resources>

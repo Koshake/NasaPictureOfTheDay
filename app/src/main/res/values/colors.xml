@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#A7CFF4</color>
+    <color name="colorPrimaryDark">#0E4BA2</color>
+    <color name="colorAccent">#39A20E</color>
+
+    <color name="bottomSheetBackground">#03DAC5</color>
+    <color name="color_gray">#66000000</color>
+    <color name="color_milk_white">#f6f6fa</color>
+</resources>
