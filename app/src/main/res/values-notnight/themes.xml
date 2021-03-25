@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_green</item>
+        <item name="colorPrimaryDark">@color/color_dark_green</item>
+        <item name="colorAccent">@color/color_orange</item>
+        <item name="colorSecondary">@color/color_purple</item>
+        <item name="colorSecondaryVariant">@color/color_dark_green</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:textColorSecondary">@color/color_dark_gray</item>
+    </style>
+
+    <style name="AppTheme.AppThemeYellow">
+        <item name="colorPrimary">@color/color_yellow</item>
+        <item name="colorPrimaryDark">@color/color_orange</item>
+        <item name="colorAccent">@color/color_green</item>
+        <item name="colorSecondary">@color/color_dark_orange</item>
+        <item name="colorSecondaryVariant">@color/color_dark_yellow</item>
+        <item name="appBarTint">@color/color_orange</item>
+    </style>
+    <style name="AppTheme.AppThemeBlue">
+        <item name="colorPrimary">@color/color_blue</item>
+        <item name="colorPrimaryDark">@color/color_dark_blue</item>
+        <item name="colorAccent">@color/color_light_purple</item>
+        <item name="colorSecondary">@color/color_sky_blue</item>
+        <item name="colorSecondaryVariant">@color/color_dark_green</item>
+        <item name="appBarTint">@color/color_dark_blue</item>
+    </style>
+
+    <style name="AppThemeFancy" parent="AppTheme.AppThemeBlue">
+        <item name="colorPrimary">@color/color_fucsia</item>
+        <item name="colorPrimaryDark">@color/color_purple</item>
+        <item name="colorSecondary">@color/color_pig</item>
+        <item name="colorAccent">@color/color_dark_purple</item>
+        <item name="appBarTint">@color/color_light_purple</item>
+        <item name="shapeAppearanceSmallComponent">@style/AppShapeAppearance.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/AppShapeAppearance.MediumComponent</item>
+    </style>
+
+    <style name="AppShapeAppearance.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">2dp</item>
+    </style>
+
+    <style name="AppShapeAppearance.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">2dp</item>
+    </style>
+</resources>
