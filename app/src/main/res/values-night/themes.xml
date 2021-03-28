@@ -9,6 +9,8 @@
         <item name="android:textColorPrimary">@color/color_dark_gray</item>
         <item name="android:textColorSecondary">@color/color_dark_gray</item>
         <item name="appBarTint">@color/color_green</item>
+        <item name="indicator_active_color">@color/color_indigo</item>
+        <item name="indicator_passive_color">@color/color_light_blue</item>
     </style>
 
     <style name="AppTheme.AppThemeYellow">

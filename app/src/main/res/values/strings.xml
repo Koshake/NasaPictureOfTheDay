@@ -15,4 +15,7 @@
     <string name="yellow">Yellow</string>
     <string name="Blue">Blue</string>
     <string name="Fancy">Fancy</string>
+    <string name="Earth">Earth</string>
+    <string name="Mars">Mars</string>
+    <string name="info">info</string>
 </resources>

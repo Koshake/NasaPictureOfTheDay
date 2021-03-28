@@ -13,4 +13,4 @@ data class PODServerResponseData(
     @Expose val title: String?,
     @Expose val url: String?,
     @Expose val hdurl: String?
-) :Parcelable
+) : Parcelable
