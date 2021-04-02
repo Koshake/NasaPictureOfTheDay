@@ -2,12 +2,15 @@ package com.koshake1.nasapictureoftheday.ui.earth
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.koshake1.nasapictureoftheday.R
+import com.koshake1.nasapictureoftheday.ui.settings.SettingsActivity
 import com.koshake1.nasapictureoftheday.utils.*
 import kotlinx.android.synthetic.main.activity_earth.*
+import kotlinx.android.synthetic.main.fragment_settings.*
 
 class ActivityEarth : AppCompatActivity() {
 
@@ -17,7 +20,7 @@ class ActivityEarth : AppCompatActivity() {
         setContentView(R.layout.activity_earth)
         view_pager.adapter = EarthViewPagerAdapter(supportFragmentManager)
         tab_layout.setupWithViewPager(view_pager)
-
+        setBottomBar()
         view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
 
             override fun onPageSelected(position: Int) {
@@ -56,6 +59,14 @@ class ActivityEarth : AppCompatActivity() {
                 indicator_second.setImageResource(R.drawable.swipe_indicator_passive)
                 indicator_third.setImageResource(R.drawable.swipe_indicator_passive)
             }
+        }
+    }
+
+    private fun setBottomBar() {
+        setSupportActionBar(bottom_app_bar_earth)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        bottom_app_bar_earth.setNavigationOnClickListener {
+            onBackPressed()
         }
     }
 }

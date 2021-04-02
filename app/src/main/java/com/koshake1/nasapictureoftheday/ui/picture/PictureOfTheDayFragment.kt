@@ -50,7 +50,7 @@ class PictureOfTheDayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+        return inflater.inflate(R.layout.main_fragment_start, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -127,6 +127,7 @@ class PictureOfTheDayFragment : Fragment() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
                     BottomSheetBehavior.STATE_COLLAPSED -> {
+                        bottom_sheet_description_info.visibility = TextView.VISIBLE
                         bottom_sheet_description_header.visibility = TextView.GONE
                         bottom_sheet_description.visibility = TextView.GONE
                     }
@@ -134,6 +135,7 @@ class PictureOfTheDayFragment : Fragment() {
             }
 
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                bottom_sheet_description_info.visibility = TextView.GONE
                 bottom_sheet_description_header.visibility = TextView.VISIBLE
                 bottom_sheet_description.visibility = TextView.VISIBLE
             }

@@ -14,6 +14,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/bottom_sheet_description_info"
+        style="@style/bottom_sheet_info_style"
+        android:text="@string/show_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_description_header" />
+
+    <TextView
         android:id="@+id/bottom_sheet_description_header"
         style="@style/bottom_sheet_header_style"
         app:layout_constraintEnd_toEndOf="parent"
