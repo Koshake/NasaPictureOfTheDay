@@ -7,12 +7,7 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="@dimen/medium_8"
-        android:layout_marginTop="@dimen/medium_8"
-        android:layout_marginEnd="@dimen/medium_8"
+        style="@style/screens_nav_view_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

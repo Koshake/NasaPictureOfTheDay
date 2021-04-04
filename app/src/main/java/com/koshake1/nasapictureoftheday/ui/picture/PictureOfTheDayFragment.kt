@@ -1,6 +1,5 @@
 package com.koshake1.nasapictureoftheday.ui.picture
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -19,12 +18,12 @@ import com.google.android.material.chip.Chip
 import com.koshake1.nasapictureoftheday.R
 import com.koshake1.nasapictureoftheday.data.PictureOfTheDayData
 import com.koshake1.nasapictureoftheday.ui.MainActivity
-import com.koshake1.nasapictureoftheday.ui.chips.ChipsFragment
+import com.koshake1.nasapictureoftheday.ui.settings.SettingsActivity
+import com.koshake1.nasapictureoftheday.ui.settings.SettingsFragment
+import com.koshake1.nasapictureoftheday.utils.toast
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
-import kotlinx.android.synthetic.main.fragment_chips.*
 import kotlinx.android.synthetic.main.main_fragment.*
 import kotlinx.android.synthetic.main.main_fragment.chipGroup
-import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
 
@@ -74,10 +73,10 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
-            R.id.app_bar_settings -> activity?.supportFragmentManager?.beginTransaction()
-                ?.add(R.id.container, ChipsFragment())?.addToBackStack(null)?.commit()
-            R.id.app_bar_search -> Toast.makeText(context, "Search", Toast.LENGTH_SHORT).show()
+            R.id.app_bar_fav -> toast("Favourite")
+            R.id.app_bar_settings ->
+                startActivity(Intent(requireActivity(), SettingsActivity::class.java))
+            R.id.app_bar_search -> toast("Search")
             android.R.id.home -> {
                 activity?.let {
                     BottomNavigationDrawerFragment().show(
@@ -99,10 +98,10 @@ class PictureOfTheDayFragment : Fragment() {
                 setBottomSheetText(serverResponseData.explanation)
             }
             is PictureOfTheDayData.Loading -> {
-                Toast.makeText(context, "Picture is loading", Toast.LENGTH_SHORT).apply { show() }
+                toast("Picture is loading")
             }
             is PictureOfTheDayData.Error -> {
-                Toast.makeText(context, data.error.message, Toast.LENGTH_SHORT).apply { show() }
+                toast(data.error.message)
             }
         }
     }
@@ -153,17 +152,16 @@ class PictureOfTheDayFragment : Fragment() {
 
     private fun loadPicture(url: String?) {
         if (url.isNullOrEmpty()) {
-            Toast.makeText(context, "Url is Null", Toast.LENGTH_SHORT)
+            toast("Url is Null")
         } else {
             image_view.load(url) {
                 lifecycle(this@PictureOfTheDayFragment)
                 error(R.drawable.ic_load_error_vector)
                 placeholder(R.drawable.ic_no_photo_vector)
-                Toast.makeText(context, "Picture is loaded", Toast.LENGTH_SHORT).apply { show() }
+                toast("Picture is loaded")
             }
         }
     }
-
 
     private fun setBottomSheetTitle(text: String?) {
         text.let { bottom_sheet_description_header.text = text }
@@ -177,7 +175,6 @@ class PictureOfTheDayFragment : Fragment() {
         chipToday.isChecked = true
         chipGroup.setOnCheckedChangeListener { chipGroup, position ->
             chipGroup.findViewById<Chip>(position)?.let {
-                Toast.makeText(context, "Выбран ${it.text}", Toast.LENGTH_SHORT).show()
                 when (it) {
                     chipToday -> viewModel.getData(LocalDate.now().toString())
                     chipYesterday -> viewModel.getData(LocalDate.now().minusDays(1).toString())
