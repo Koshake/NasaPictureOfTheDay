@@ -11,11 +11,12 @@ import coil.api.load
 import com.koshake1.nasapictureoftheday.R
 import com.koshake1.nasapictureoftheday.data.EarthData
 import com.koshake1.nasapictureoftheday.utils.toast
+import kotlinx.android.synthetic.main.activity_earth.*
 import kotlinx.android.synthetic.main.fragment_earth.*
 import kotlinx.android.synthetic.main.main_fragment.*
 import java.time.LocalDate
 
-class EarthFragment(private val date : String) : Fragment() {
+class EarthFragment(private val date: String) : Fragment() {
 
     private val viewModel: EarthViewModel by lazy {
         ViewModelProviders.of(this).get(EarthViewModel::class.java)
@@ -42,6 +43,7 @@ class EarthFragment(private val date : String) : Fragment() {
                 val serverResponseData = data.serverResponseData
                 serverResponseData?.let {
                     loadPicture(serverResponseData[0].image, date)
+                    setDescription(serverResponseData[0].caption)
                 }
             }
             is EarthData.Loading -> {
@@ -65,5 +67,9 @@ class EarthFragment(private val date : String) : Fragment() {
                 //toast("Picture is loaded")
             }
         }
+    }
+
+    private fun setDescription(description: String?) {
+        image_description?.text = description
     }
 }

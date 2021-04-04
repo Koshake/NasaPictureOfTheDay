@@ -15,7 +15,11 @@ private const val THIRD_DATE = 2
 class EarthViewPagerAdapter(private val fragmentManager: FragmentManager) :
     FragmentStatePagerAdapter(fragmentManager) {
 
-    private val dates = listOf("2019-05-28", "2019-05-29","2019-05-30")
+    private val dates = listOf(
+        LocalDate.now().minusDays(4).toString(),
+        LocalDate.now().minusDays(3).toString(),
+        LocalDate.now().minusDays(2).toString()
+    )
 
     private val fragments = arrayOf(
         EarthFragment(dates[FIRST_DATE]),

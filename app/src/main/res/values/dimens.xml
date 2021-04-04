@@ -6,6 +6,7 @@
     <dimen name="bottom_sheet_line_margin_top">8dp</dimen>
     <dimen name="bottom_sheet_line_height">1dp</dimen>
     <dimen name="bottom_sheet_line_width">25dp</dimen>
+    <dimen name="bottom_sheet_line_margin_start">20dp</dimen>
 
     <dimen name="description_padding">10dp</dimen>
     <dimen name="peek_height">100dp</dimen>
@@ -13,8 +14,16 @@
     <dimen name="screens_nav_margin">8dp</dimen>
 
     <dimen name="settings_margin_left">16dp</dimen>
-    <dimen name="indicator_margin">7dp</dimen>
-    <dimen name="indicator_margin_bottom">40dp</dimen>
+    <dimen name="indicator_margin">4dp</dimen>
+    <dimen name="indicator_margin_bottom">60dp</dimen>
     <dimen name="planet_layout_margin">20dp</dimen>
-    <dimen name="chip_group_margin">50dp</dimen>
+    <dimen name="chip_group_margin">10dp</dimen>
+
+    <dimen name="wiki_button_margin_botton">10dp</dimen>
+    <dimen name="wiki_button_margin_end">8dp</dimen>
+
+    <dimen name="spinner_margin_bottom">8dp</dimen>
+
+    <dimen name="text_margin">2dp</dimen>
+    <dimen name="text_size">16sp</dimen>
 </resources>
