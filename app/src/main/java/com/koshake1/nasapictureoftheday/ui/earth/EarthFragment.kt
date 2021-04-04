@@ -1,9 +1,13 @@
 package com.koshake1.nasapictureoftheday.ui.earth
 
 import android.os.Bundle
+import android.transition.ChangeImageTransform
+import android.transition.TransitionManager
+import android.transition.TransitionSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -14,9 +18,10 @@ import com.koshake1.nasapictureoftheday.utils.toast
 import kotlinx.android.synthetic.main.activity_earth.*
 import kotlinx.android.synthetic.main.fragment_earth.*
 import kotlinx.android.synthetic.main.main_fragment.*
-import java.time.LocalDate
 
 class EarthFragment(private val date: String) : Fragment() {
+
+    private var isImageExpanded = false
 
     private val viewModel: EarthViewModel by lazy {
         ViewModelProviders.of(this).get(EarthViewModel::class.java)
@@ -33,6 +38,11 @@ class EarthFragment(private val date: String) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_earth, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setImageAnimation()
     }
 
     fun getDate() = date
@@ -71,5 +81,21 @@ class EarthFragment(private val date: String) : Fragment() {
 
     private fun setDescription(description: String?) {
         image_description?.text = description
+    }
+
+    private fun setImageAnimation() {
+        earth_image.setOnClickListener {
+            isImageExpanded = !isImageExpanded
+            TransitionManager.beginDelayedTransition(
+                earth_layout, TransitionSet()
+                    .addTransition(ChangeImageTransform())
+            )
+            val params: ViewGroup.LayoutParams = earth_image.layoutParams
+            params.height =
+                if (isImageExpanded) ViewGroup.LayoutParams.MATCH_PARENT else ViewGroup.LayoutParams.WRAP_CONTENT
+            earth_image.layoutParams = params
+            earth_image.scaleType =
+                if (isImageExpanded) ImageView.ScaleType.CENTER_CROP else ImageView.ScaleType.FIT_CENTER
+        }
     }
 }

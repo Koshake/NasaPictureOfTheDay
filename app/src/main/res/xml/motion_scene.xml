@@ -18,4 +18,13 @@
 
     </Transition>
 
+    <Transition
+        motion:constraintSetEnd="@layout/main_fragment_end"
+        motion:constraintSetStart="@layout/main_fragment_start"
+        motion:duration="1000">
+
+        <OnClick motion:targetId="@id/image_view" />
+
+    </Transition>
+
 </MotionScene>

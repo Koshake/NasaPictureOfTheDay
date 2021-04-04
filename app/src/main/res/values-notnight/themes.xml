@@ -12,6 +12,7 @@
         <item name="android:textColorSecondary">@color/color_dark_gray</item>
         <item name="indicator_active_color">@color/color_indigo</item>
         <item name="indicator_passive_color">@color/color_light_blue</item>
+        <item name="image_info_color">@color/color_light_blue</item>
     </style>
 
     <style name="AppTheme.AppThemeYellow">
@@ -23,6 +24,7 @@
         <item name="appBarTint">@color/color_orange</item>
         <item name="indicator_active_color">@color/color_lime</item>
         <item name="indicator_passive_color">@color/color_gray</item>
+        <item name="image_info_color">@color/color_yellow</item>
     </style>
     <style name="AppTheme.AppThemeBlue">
         <item name="colorPrimary">@color/color_blue</item>
@@ -41,6 +43,7 @@
         <item name="appBarTint">@color/color_light_purple</item>
         <item name="indicator_active_color">@color/color_fucsia</item>
         <item name="indicator_passive_color">@color/color_light_purple</item>
+        <item name="image_info_color">@color/color_pig</item>
         <item name="shapeAppearanceSmallComponent">@style/AppShapeAppearance.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/AppShapeAppearance.MediumComponent</item>
     </style>
