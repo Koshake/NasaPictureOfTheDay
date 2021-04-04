@@ -3,11 +3,11 @@
     <group android:checkableBehavior="none">
         <item
             android:id="@+id/navigation_one"
-            android:icon="@drawable/ic_archive"
-            android:title="На экран 1" />
+            android:icon="@drawable/ic_earth"
+            android:title="@string/Earth" />
         <item
             android:id="@+id/navigation_two"
-            android:icon="@drawable/ic_send"
-            android:title="На экран 2" />
+            android:icon="@drawable/ic_mars"
+            android:title="@string/Mars" />
     </group>
 </menu>

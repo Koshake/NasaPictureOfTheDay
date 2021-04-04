@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.koshake1.nasapictureoftheday.R
-import com.koshake1.nasapictureoftheday.utils.PRIVATE_MODE
-import com.koshake1.nasapictureoftheday.utils.THEME_TAG
-import com.koshake1.nasapictureoftheday.utils.Themes
-import com.koshake1.nasapictureoftheday.utils.setNewTheme
+import com.koshake1.nasapictureoftheday.utils.*
 
 class SettingsActivity : AppCompatActivity() {
     companion object {
@@ -19,12 +16,7 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "SettingsActivity onCreate ")
 
-        val sharedPref: SharedPreferences = getSharedPreferences(THEME_TAG, PRIVATE_MODE)
-        if (sharedPref.contains(THEME_TAG)) {
-            setNewTheme(sharedPref.getInt(THEME_TAG, Themes.YELLOW.themeNum))
-        } else {
-            setNewTheme(Themes.YELLOW.themeNum)
-        }
+        resetTheme()
 
         setContentView(R.layout.activity_settings)
         if (savedInstanceState == null) {

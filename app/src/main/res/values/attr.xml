@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="appBarTint" format="reference"/>
+    <attr name="indicator_active_color" format="reference"/>
+    <attr name="indicator_passive_color" format="reference"/>
 </resources>

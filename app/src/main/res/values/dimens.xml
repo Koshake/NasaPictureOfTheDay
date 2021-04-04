@@ -13,4 +13,8 @@
     <dimen name="screens_nav_margin">8dp</dimen>
 
     <dimen name="settings_margin_left">16dp</dimen>
+    <dimen name="indicator_margin">7dp</dimen>
+    <dimen name="indicator_margin_bottom">40dp</dimen>
+    <dimen name="planet_layout_margin">20dp</dimen>
+    <dimen name="chip_group_margin">50dp</dimen>
 </resources>

@@ -31,7 +31,6 @@ class PictureOfTheDayFragment : Fragment() {
 
     companion object {
         private val TAG = "tag"
-        private var isMain = true
         fun newInstance() = PictureOfTheDayFragment()
     }
 
@@ -73,7 +72,14 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> toast("Favourite")
+            R.id.app_bar_info -> {
+                bottomSheetBehavior.state =
+                    if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED) {
+                        BottomSheetBehavior.STATE_EXPANDED
+                    } else {
+                        BottomSheetBehavior.STATE_COLLAPSED
+                    }
+            }
             R.id.app_bar_settings ->
                 startActivity(Intent(requireActivity(), SettingsActivity::class.java))
             R.id.app_bar_search -> toast("Search")
@@ -98,7 +104,7 @@ class PictureOfTheDayFragment : Fragment() {
                 setBottomSheetText(serverResponseData.explanation)
             }
             is PictureOfTheDayData.Loading -> {
-                toast("Picture is loading")
+                //toast("Picture is loading")
             }
             is PictureOfTheDayData.Error -> {
                 toast(data.error.message)
@@ -110,22 +116,6 @@ class PictureOfTheDayFragment : Fragment() {
         val context = activity as MainActivity
         context.setSupportActionBar(view.findViewById(R.id.bottom_app_bar))
         setHasOptionsMenu(true)
-        fab.setOnClickListener {
-            if (isMain) {
-                isMain = false
-                bottom_app_bar.navigationIcon = null
-                bottom_app_bar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_back_fab))
-                bottom_app_bar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
-            } else {
-                isMain = true
-                bottom_app_bar.navigationIcon =
-                    ContextCompat.getDrawable(context, R.drawable.ic_hamburger_menu_bottom_bar)
-                bottom_app_bar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_plus_fab))
-                bottom_app_bar.replaceMenu(R.menu.menu_bottom_bar)
-            }
-        }
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
@@ -158,7 +148,7 @@ class PictureOfTheDayFragment : Fragment() {
                 lifecycle(this@PictureOfTheDayFragment)
                 error(R.drawable.ic_load_error_vector)
                 placeholder(R.drawable.ic_no_photo_vector)
-                toast("Picture is loaded")
+                //toast("Picture is loaded")
             }
         }
     }

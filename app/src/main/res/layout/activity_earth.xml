@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.earth.ActivityEarth">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabGravity="fill" />
+    </androidx.viewpager.widget.ViewPager>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="@dimen/planet_layout_margin"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_pager">
+
+        <ImageView
+            android:id="@+id/indicator_first"
+            style="@style/IndicatorStyle"
+            android:src="@drawable/swipe_indicator_active" />
+
+        <ImageView
+            android:id="@+id/indicator_second"
+            style="@style/IndicatorStyle"
+            android:src="@drawable/swipe_indicator_passive" />
+
+        <ImageView
+            android:id="@+id/indicator_third"
+            style="@style/IndicatorStyle"
+            android:src="@drawable/swipe_indicator_passive" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
