@@ -20,25 +20,9 @@
     <string name="Mars">Mars</string>
     <string name="info">info</string>
     <string name="show_description">Show description</string>
-
-    <string-array name="months">
-        <item>January</item>
-        <item>February</item>
-        <item>March</item>
-        <item>April</item>
-        <item>May</item>
-        <item>June</item>
-        <item>July</item>
-        <item>August</item>
-        <item>September</item>
-        <item>October</item>
-        <item>November</item>
-        <item>December</item>
-
-    </string-array>
-    <string-array name="years">
-        <item>2019</item>
-        <item>2018</item>
-        <item>2017</item>
-    </string-array>
+    <string name="header">Header</string>
+    <string name="note">Note</string>
+    <string name="save">Save</string>
+    <string name="add_note">Create your note</string>
+    <string name="add_first_note">Add your first note here!</string>
 </resources>

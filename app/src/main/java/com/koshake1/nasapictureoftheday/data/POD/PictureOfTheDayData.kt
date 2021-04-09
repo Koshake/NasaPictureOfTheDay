@@ -1,4 +1,4 @@
-package com.koshake1.nasapictureoftheday.data
+package com.koshake1.nasapictureoftheday.data.POD
 
 import com.koshake1.nasapictureoftheday.retrofit.data.PODServerResponseData
 

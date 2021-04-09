@@ -1,6 +1,5 @@
 package com.koshake1.nasapictureoftheday.ui.settings
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity

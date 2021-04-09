@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.chip.Chip
 import com.koshake1.nasapictureoftheday.R
-import com.koshake1.nasapictureoftheday.ui.MainActivity
 import com.koshake1.nasapictureoftheday.utils.PRIVATE_MODE
 import com.koshake1.nasapictureoftheday.utils.THEME_TAG
 import com.koshake1.nasapictureoftheday.utils.Themes

@@ -6,6 +6,7 @@
     <color name="bottomSheetBackground">#03DAC5</color>
     <color name="color_gray">#66000000</color>
     <color name="color_dark_gray">#566573</color>
+    <color name="color_light_gray">#e5e5e5</color>
     <color name="color_milk_white">#f6f6fa</color>
     <color name="color_milk_white_transparent">#7ff6f6fa</color>
 
@@ -15,11 +16,13 @@
     <color name="color_dark_blue">#1F618D</color>
     <color name="color_indigo">#2874A6</color>
     <color name="color_yellow">#F1C40F</color>
+    <color name="color_light_yellow">#fffbd6</color>
     <color name="color_dark_yellow">#D4AC0D</color>
     <color name="color_orange">#FFA500</color>
     <color name="color_dark_orange">#D35400</color>
     <color name="color_light_blue">#AED6F1</color>
     <color name="color_sky_blue">#2ACAEA</color>
+    <color name="color_light_sky_blue">#f1fcff</color>
 
     <color name="color_lime">#DFFF00</color>
     <color name="color_turquoise">#9FE2BF</color>
@@ -28,4 +31,5 @@
     <color name="color_dark_purple">#462975</color>
     <color name="color_fucsia">#DE3163</color>
     <color name="color_pig">#FF70B7</color>
+    <color name="color_light_pink">#fcf7fc</color>
 </resources>

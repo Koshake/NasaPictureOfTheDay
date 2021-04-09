@@ -1,14 +1,16 @@
 package com.koshake1.nasapictureoftheday.utils
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.view.Gravity
-import android.widget.ImageView
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import coil.api.load
 import com.koshake1.nasapictureoftheday.R
-import kotlinx.android.synthetic.main.main_fragment.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 fun Fragment.toast(string: String?) {
     Toast.makeText(context, string, Toast.LENGTH_SHORT).apply {
@@ -32,4 +34,9 @@ fun AppCompatActivity.resetTheme() {
     } else {
         setNewTheme(Themes.YELLOW.themeNum)
     }
+}
+
+fun View.hideKeyboard() {
+    val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
 }

@@ -13,6 +13,9 @@
         <item name="indicator_active_color">@color/color_indigo</item>
         <item name="indicator_passive_color">@color/color_light_blue</item>
         <item name="image_info_color">@color/color_light_blue</item>
+        <item name="earth_card_background">@color/color_milk_white</item>
+        <item name="note_background">@color/color_milk_white</item>
+        <item name="note_selected_background">@color/color_light_gray</item>
     </style>
 
     <style name="AppTheme.AppThemeYellow">
@@ -25,6 +28,7 @@
         <item name="indicator_active_color">@color/color_lime</item>
         <item name="indicator_passive_color">@color/color_gray</item>
         <item name="image_info_color">@color/color_yellow</item>
+        <item name="earth_card_background">@color/color_light_yellow</item>
     </style>
     <style name="AppTheme.AppThemeBlue">
         <item name="colorPrimary">@color/color_blue</item>
@@ -33,6 +37,7 @@
         <item name="colorSecondary">@color/color_sky_blue</item>
         <item name="colorSecondaryVariant">@color/color_dark_green</item>
         <item name="appBarTint">@color/color_dark_blue</item>
+        <item name="earth_card_background">@color/color_light_sky_blue</item>
     </style>
 
     <style name="AppThemeFancy" parent="AppTheme.AppThemeBlue">
@@ -44,6 +49,7 @@
         <item name="indicator_active_color">@color/color_fucsia</item>
         <item name="indicator_passive_color">@color/color_light_purple</item>
         <item name="image_info_color">@color/color_pig</item>
+        <item name="earth_card_background">@color/color_light_pink</item>
         <item name="shapeAppearanceSmallComponent">@style/AppShapeAppearance.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/AppShapeAppearance.MediumComponent</item>
     </style>

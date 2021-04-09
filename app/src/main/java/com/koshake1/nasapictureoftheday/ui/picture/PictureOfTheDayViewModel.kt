@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.koshake1.nasapictureoftheday.BuildConfig
-import com.koshake1.nasapictureoftheday.data.PictureOfTheDayData
+import com.koshake1.nasapictureoftheday.data.POD.PictureOfTheDayData
 import com.koshake1.nasapictureoftheday.retrofit.data.PODRetrofitImpl
 import com.koshake1.nasapictureoftheday.retrofit.data.PODServerResponseData
 import retrofit2.Call

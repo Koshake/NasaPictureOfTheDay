@@ -15,10 +15,13 @@
             android:name=".ui.settings.SettingsActivity"
             android:label="@string/settings">
         </activity>
+        <activity
+            android:name=".ui.notes.NotesActivity"
+            android:label="@string/note">
+        </activity>
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
