@@ -2,6 +2,10 @@ package com.koshake1.nasapictureoftheday.ui.notes.adapter
 
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.BulletSpan
+import android.text.style.QuoteSpan
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -13,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.koshake1.nasapictureoftheday.R
 import com.koshake1.nasapictureoftheday.data.notes.NotesData
 import com.koshake1.nasapictureoftheday.data.notes.NotesRepositoryImpl
+import com.koshake1.nasapictureoftheday.utils.BULLET_SPAN_GAP
+import com.koshake1.nasapictureoftheday.utils.BULLET_SPAN_RADIUS
 import kotlinx.android.synthetic.main.item_note.view.*
 
 val DIFF_UTIL: DiffUtil.ItemCallback<NotesData> = object : DiffUtil.ItemCallback<NotesData>() {
@@ -61,8 +67,17 @@ class NotesAdapter(val noteHandler: (NotesData) -> Unit, val dragListener: OnSta
         fun bind(item: NotesData) {
             currentNote = item
             with(itemView) {
-                title.text = item.title
                 body.text = item.note
+
+                var spannableString = SpannableString(item.title)
+                spannableString.setSpan(
+                    BulletSpan(BULLET_SPAN_GAP, Color.GRAY, BULLET_SPAN_RADIUS),
+                    0,
+                    spannableString.length,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+                title.text = spannableString
+
                 setOnClickListener(clickListener)
                 dragHandleImageView.setOnTouchListener { _, motionEvent ->
                     if (MotionEventCompat.getActionMasked(motionEvent) == MotionEvent.ACTION_DOWN) {
