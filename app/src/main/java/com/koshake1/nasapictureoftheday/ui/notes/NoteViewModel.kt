@@ -13,9 +13,9 @@ class NoteViewModel(var note: NotesData?) : ViewModel() {
     fun updateTitle(text: String) {
         note = (note ?: generateNote()).copy(title = text)
     }
-    
+
     fun saveNote() {
-        note?.let{
+        note?.let {
             NotesRepositoryImpl.addOrReplaceNote(it)
         }
     }

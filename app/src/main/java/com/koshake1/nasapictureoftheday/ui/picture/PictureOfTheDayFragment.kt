@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.transition.TransitionManager
 import android.view.*
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -18,11 +19,13 @@ import com.google.android.material.chip.Chip
 import com.koshake1.nasapictureoftheday.R
 import com.koshake1.nasapictureoftheday.data.POD.PictureOfTheDayData
 import com.koshake1.nasapictureoftheday.ui.MainActivity
+import com.koshake1.nasapictureoftheday.ui.earth.ActivityEarth
 import com.koshake1.nasapictureoftheday.ui.notes.NotesActivity
 import com.koshake1.nasapictureoftheday.ui.notes.NotesFragment
 import com.koshake1.nasapictureoftheday.ui.settings.SettingsActivity
 import com.koshake1.nasapictureoftheday.utils.toast
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
+import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.main_fragment.*
 import kotlinx.android.synthetic.main.main_fragment.chipGroup
 import java.time.LocalDate
@@ -74,12 +77,13 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.app_bar_info -> {
-                bottomSheetBehavior.state =
-                    if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED) {
+                when (bottomSheetBehavior.state) {
+                    BottomSheetBehavior.STATE_COLLAPSED -> bottomSheetBehavior.state =
                         BottomSheetBehavior.STATE_EXPANDED
-                    } else {
-                        BottomSheetBehavior.STATE_COLLAPSED
-                    }
+                    BottomSheetBehavior.STATE_HIDDEN -> bottomSheetBehavior.state =
+                        BottomSheetBehavior.STATE_EXPANDED
+                    else -> bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+                }
             }
             R.id.app_bar_settings ->
                 startActivity(Intent(requireActivity(), SettingsActivity::class.java))
@@ -109,7 +113,6 @@ class PictureOfTheDayFragment : Fragment() {
                 setBottomSheetText(serverResponseData.explanation)
             }
             is PictureOfTheDayData.Loading -> {
-                //toast("Picture is loading")
             }
             is PictureOfTheDayData.Error -> {
                 toast(data.error.message)
@@ -119,7 +122,13 @@ class PictureOfTheDayFragment : Fragment() {
 
     private fun setBottomAppBar(view: View) {
         val context = activity as MainActivity
-        context.setSupportActionBar(view.findViewById(R.id.bottom_app_bar))
+        val bottomAppBar: BottomAppBar = view.findViewById(R.id.bottom_app_bar)
+        context.setSupportActionBar(bottomAppBar)
+        context.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        bottomAppBar.setNavigationIcon(R.drawable.ic_earth)
+        bottomAppBar.setNavigationOnClickListener {
+            activity?.let { startActivity(Intent(it, ActivityEarth::class.java)) }
+        }
         setHasOptionsMenu(true)
     }
 

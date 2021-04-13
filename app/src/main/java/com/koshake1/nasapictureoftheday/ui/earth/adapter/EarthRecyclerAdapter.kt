@@ -77,6 +77,7 @@ class EarthRecyclerAdapter(val onItemClickListener: OnListItemClickListener) :
                     if (isImageExpanded) ImageView.ScaleType.CENTER_CROP else ImageView.ScaleType.CENTER
             }
             itemView.text_time.text = "Time: ${getImageTime(serverResponseData.date)}"
+            itemView.text_description.text = serverResponseData.caption
         }
 
         private fun getImageTime(date: String?): CharSequence? {

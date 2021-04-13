@@ -25,33 +25,11 @@
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:tabTextColor="@color/chip_choice_text_background"
                 app:tabGravity="fill" />
 
         </androidx.viewpager.widget.ViewPager>
 
-        <ImageView
-            android:id="@+id/indicator_first"
-            style="@style/IndicatorStyle"
-            android:src="@drawable/swipe_indicator_active"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/indicator_second"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageView
-            android:id="@+id/indicator_second"
-            style="@style/IndicatorStyle"
-            android:src="@drawable/swipe_indicator_passive"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/indicator_third"
-            app:layout_constraintStart_toEndOf="@id/indicator_first" />
-
-        <ImageView
-            android:id="@+id/indicator_third"
-            style="@style/IndicatorStyle"
-            android:src="@drawable/swipe_indicator_passive"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/indicator_second" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar

@@ -9,4 +9,7 @@
     <attr name="earth_card_background" format="reference"/>
     <attr name="note_background" format="reference"/>
     <attr name="note_selected_background" format="reference"/>
+    <attr name="icon_color" format="reference"/>
+    <attr name="tab_background" format="reference"/>
+    <attr name="edit_text_hint_color" format="reference"/>
 </resources>

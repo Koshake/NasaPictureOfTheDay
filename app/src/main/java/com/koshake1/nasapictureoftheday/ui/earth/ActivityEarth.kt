@@ -27,34 +27,8 @@ class ActivityEarth : AppCompatActivity() {
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
-                resetIndicators(position)
             }
         })
-    }
-
-    private fun resetIndicators(num : Int) {
-        when (num) {
-            POSITION_FIRST -> {
-                indicator_first.setImageResource(R.drawable.swipe_indicator_active)
-                indicator_second.setImageResource(R.drawable.swipe_indicator_passive)
-                indicator_third.setImageResource(R.drawable.swipe_indicator_passive)
-            }
-            POSITION_SECOND -> {
-                indicator_second.setImageResource(R.drawable.swipe_indicator_active)
-                indicator_first.setImageResource(R.drawable.swipe_indicator_passive)
-                indicator_third.setImageResource(R.drawable.swipe_indicator_passive)
-            }
-            POSITION_THIRD -> {
-                indicator_third.setImageResource(R.drawable.swipe_indicator_active)
-                indicator_first.setImageResource(R.drawable.swipe_indicator_passive)
-                indicator_second.setImageResource(R.drawable.swipe_indicator_passive)
-        }
-            else -> {
-                indicator_first.setImageResource(R.drawable.swipe_indicator_active)
-                indicator_second.setImageResource(R.drawable.swipe_indicator_passive)
-                indicator_third.setImageResource(R.drawable.swipe_indicator_passive)
-            }
-        }
     }
 
     private fun setBottomBar() {

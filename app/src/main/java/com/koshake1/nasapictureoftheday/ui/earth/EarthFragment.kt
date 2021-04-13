@@ -29,12 +29,6 @@ class EarthFragment(private val date: String) : Fragment() {
 
     private var adapter: EarthRecyclerAdapter? = null
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        //viewModel.getData(date)
-        //    .observe(viewLifecycleOwner, Observer { renderData(it) })
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,7 +41,6 @@ class EarthFragment(private val date: String) : Fragment() {
         initAdapter()
         viewModel.getData(date)
             .observe(viewLifecycleOwner, Observer { renderData(it) })
-        //setImageAnimation()
     }
 
     fun getDate() = date
