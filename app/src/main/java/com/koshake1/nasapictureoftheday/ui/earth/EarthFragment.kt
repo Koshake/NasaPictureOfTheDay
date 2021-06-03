@@ -1,6 +1,7 @@
 package com.koshake1.nasapictureoftheday.ui.earth
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +15,13 @@ import com.koshake1.nasapictureoftheday.data.earth.EarthData
 import com.koshake1.nasapictureoftheday.retrofit.data.EarthServerResponseData
 import com.koshake1.nasapictureoftheday.ui.earth.adapter.EarthRecyclerAdapter
 import com.koshake1.nasapictureoftheday.ui.earth.adapter.OnListItemClickListener
+import com.koshake1.nasapictureoftheday.ui.picture.PictureOfTheDayFragment
+import com.koshake1.nasapictureoftheday.ui.picture.PictureOfTheDayViewModel
 import com.koshake1.nasapictureoftheday.utils.toast
 import kotlinx.android.synthetic.main.fragment_earth.*
+import org.koin.android.scope.currentScope
+import org.koin.android.viewmodel.ext.android.viewModel
+import java.time.LocalDate
 
 class EarthFragment(private val date: String) : Fragment() {
 
@@ -23,9 +29,7 @@ class EarthFragment(private val date: String) : Fragment() {
         val TAG = "EARTH_TAG"
     }
 
-    private val viewModel: EarthViewModel by lazy {
-        ViewModelProviders.of(this).get(EarthViewModel::class.java)
-    }
+    lateinit var viewModel: EarthViewModel
 
     private var adapter: EarthRecyclerAdapter? = null
 
@@ -33,17 +37,24 @@ class EarthFragment(private val date: String) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d(TAG, "Earth onCreate view ")
+        initViewModel()
         return inflater.inflate(R.layout.fragment_earth, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
-        viewModel.getData(date)
-            .observe(viewLifecycleOwner, Observer { renderData(it) })
     }
 
     fun getDate() = date
+
+    private fun initViewModel() {
+        val model: EarthViewModel by currentScope.inject()
+        viewModel = model
+        viewModel.getData(date)
+            .observe(viewLifecycleOwner, Observer { renderData(it) })
+    }
 
     private fun renderData(data: EarthData?) {
         when (data) {

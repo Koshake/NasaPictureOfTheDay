@@ -1,8 +1,6 @@
 package com.koshake1.nasapictureoftheday.ui.earth
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.koshake1.nasapictureoftheday.BaseViewModel
 import com.koshake1.nasapictureoftheday.BuildConfig
 import com.koshake1.nasapictureoftheday.data.earth.EarthData
 import com.koshake1.nasapictureoftheday.retrofit.data.*
@@ -11,15 +9,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class EarthViewModel(
-    private val liveDataForViewToObserve: MutableLiveData<EarthData> = MutableLiveData(),
-    private val retrofitImpl: EarthRetrofitImpl = EarthRetrofitImpl()
-) : ViewModel() {
-    fun getData(date: String): LiveData<EarthData> {
-        sendServerRequest(date)
-        return liveDataForViewToObserve
-    }
+    private val retrofitImpl: PODRetrofitImpl
+) : BaseViewModel<EarthData>() {
 
-    private fun sendServerRequest(date: String) {
+    override fun sendServerRequest(date: String) {
         liveDataForViewToObserve.value = EarthData.Loading(null)
         val apiKey: String = BuildConfig.NASA_API_KEY
         if (apiKey.isBlank()) {

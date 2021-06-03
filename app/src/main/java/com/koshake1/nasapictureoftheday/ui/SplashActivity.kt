@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.LinearInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import com.koshake1.nasapictureoftheday.R
 import com.koshake1.nasapictureoftheday.utils.LOADING_TIME_MS
@@ -14,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
 
-    var handler = Handler()
+    private var handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
