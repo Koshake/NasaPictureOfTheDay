@@ -23,7 +23,7 @@ class PictureOfTheDayViewModel(
 
     private fun sendServerRequest(date: String) {
         liveDataForViewToObserve.value = PictureOfTheDayData.Loading(null)
-        val apiKey : String = BuildConfig.NASA_API_KEY
+        val apiKey: String = BuildConfig.NASA_API_KEY
         if (apiKey.isBlank()) {
             PictureOfTheDayData.Error(Throwable("You need api key!"))
         } else {

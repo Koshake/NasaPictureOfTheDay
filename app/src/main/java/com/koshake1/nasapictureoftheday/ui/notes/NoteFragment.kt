@@ -26,7 +26,12 @@ class NoteFragment : Fragment(R.layout.fragment_note_add) {
             return fragment
         }
     }
-    private val note: NotesData? by lazy(LazyThreadSafetyMode.NONE) { arguments?.getParcelable(NOTE_KEY) }
+
+    private val note: NotesData? by lazy(LazyThreadSafetyMode.NONE) {
+        arguments?.getParcelable(
+            NOTE_KEY
+        )
+    }
 
     private val viewModel by lazy(LazyThreadSafetyMode.NONE) {
         ViewModelProvider(this, object : ViewModelProvider.Factory {
@@ -54,8 +59,8 @@ class NoteFragment : Fragment(R.layout.fragment_note_add) {
         bodyEt.addTextChangedListener {
             viewModel.updateNote(it?.toString() ?: "")
         }
-        
-        buttonSave.setOnClickListener { 
+
+        buttonSave.setOnClickListener {
             viewModel.saveNote()
             view?.let { it.hideKeyboard() }
             activity?.onBackPressed()

@@ -31,7 +31,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_light"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+            style="@style/MyChipChoiceStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/settings_margin_left"
@@ -39,14 +39,14 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_dark"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+            style="@style/MyChipChoiceStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Blue" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_fancy"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+            style="@style/MyChipChoiceStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Fancy" />

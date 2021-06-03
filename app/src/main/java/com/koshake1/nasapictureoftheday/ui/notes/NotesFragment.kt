@@ -3,6 +3,7 @@ package com.koshake1.nasapictureoftheday.ui.notes
 import android.content.Intent
 import android.os.Bundle
 import android.transition.TransitionManager
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -42,7 +43,7 @@ class NotesFragment : Fragment(R.layout.fragment_note_main) {
         setBottomBar(view)
 
         val adapter =
-            NotesAdapter({ navigateToNote(it) } , object : OnStartDragListener {
+            NotesAdapter({ navigateToNote(it) }, object : OnStartDragListener {
                 override fun onStartDrag(viewHolder: RecyclerView.ViewHolder) {
                     itemTouchHelper.startDrag(viewHolder)
                 }
@@ -57,18 +58,19 @@ class NotesFragment : Fragment(R.layout.fragment_note_main) {
             when (it) {
                 is ViewState.Value -> {
                     adapter.submitList(it.notes)
+                    if (it.notes.isEmpty()) textFirstNote.visibility = View.VISIBLE
+                    else textFirstNote.visibility = View.GONE
                 }
                 ViewState.EMPTY -> {
                     adapter.submitList(null)
                     TransitionManager.beginDelayedTransition(layout_notes)
-                    if (textFirstNote.visibility == View.GONE) textFirstNote.visibility = View.VISIBLE
+                    textFirstNote.visibility = View.VISIBLE
                 }
             }
         }
 
         fab_add.setOnClickListener {
             navigateToCreation()
-            if (textFirstNote.visibility == View.VISIBLE) textFirstNote.visibility = View.GONE
         }
 
         mainRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -85,6 +87,17 @@ class NotesFragment : Fragment(R.layout.fragment_note_main) {
 
         if (NotesRepositoryImpl.getListForNotify().isNotEmpty())
             textFirstNote.visibility = View.GONE
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "OnResume Notes Fragment")
+        if (NotesRepositoryImpl.getListForNotify().isEmpty()) {
+            textFirstNote.visibility = View.VISIBLE
+        } else {
+            textFirstNote.visibility = View.GONE
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

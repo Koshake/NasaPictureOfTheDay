@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.BulletSpan
-import android.text.style.QuoteSpan
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -45,13 +44,11 @@ class NotesAdapter(val noteHandler: (NotesData) -> Unit, val dragListener: OnSta
     override fun onItemMove(fromPosition: Int, toPosition: Int) {
         NotesRepositoryImpl.replaceNoteByItem(getItem(fromPosition), getItem(toPosition))
         notifyItemMoved(fromPosition, toPosition)
-        //NotesRepositoryImpl.notifyChanges()
     }
 
     override fun onItemDismiss(position: Int) {
         NotesRepositoryImpl.deleteNote(getItem(position))
         notifyItemRemoved(position)
-        //NotesRepositoryImpl.notifyChanges()
     }
 
     inner class NoteViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(

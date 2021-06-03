@@ -14,9 +14,7 @@
 
         <TextView
             android:id="@+id/title"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/NoteItemHeaderStyle"
             android:layout_marginEnd="@dimen/note_text_margin"
             android:layout_marginStart="@dimen/note_text_margin"
             android:layout_marginTop="@dimen/note_text_margin"
@@ -26,7 +24,7 @@
 
         <TextView
             android:id="@+id/body"
-            style="@style/TextAppearance.AppCompat"
+            style="@style/NoteItemStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/note_text_margin"

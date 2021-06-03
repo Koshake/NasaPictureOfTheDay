@@ -1,5 +1,4 @@
 <resources>
-
     <style name="wiki_search_layout_style" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -9,7 +8,14 @@
         <item name="endIconCheckable">true</item>
         <item name="endIconDrawable">@drawable/ic_wikipedia</item>
         <item name="endIconMode">custom</item>
+        <item name="hintTextColor">?attr/edit_text_hint_color</item>
         <item name="helperText">@string/click_to_hide</item>
+    </style>
+
+    <style name="note_header_style" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="hintTextColor">?attr/edit_text_hint_color</item>
     </style>
 
     <style name="app_bar_style" parent="Widget.AppCompat.ActionBar">
@@ -104,6 +110,7 @@
         <item name="android:layout_gravity">bottom</item>
         <item name="android:background">?attr/colorPrimary</item>
         <item name="navigationIcon">@drawable/ic_baseline_arrow_back_24</item>
+        <item name="android:textColor">?attr/icon_color</item>
     </style>
 
     <style name="IndicatorStyle">
@@ -151,6 +158,18 @@
         <item name="android:textSize">@dimen/add_note_text_size</item>
     </style>
 
+    <style name="NoteItemStyle" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/color_dark_gray</item>
+    </style>
+
+    <style name="NoteItemHeaderStyle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
     <style name="EarthCardViewStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -158,6 +177,13 @@
         <item name="cardCornerRadius">@dimen/earth_corner_radius</item>
         <item name="cardElevation">@dimen/earth_elevation</item>
         <item name="cardBackgroundColor">?attr/earth_card_background</item>
+    </style>
+
+    <style name="MyChipChoiceStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="chipBackgroundColor">@color/chip_choise_background</item>
+        <item name="android:textColor">@color/chip_choice_text_background</item>
     </style>
 
 </resources>

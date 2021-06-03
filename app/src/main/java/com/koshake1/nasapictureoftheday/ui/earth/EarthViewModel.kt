@@ -21,7 +21,7 @@ class EarthViewModel(
 
     private fun sendServerRequest(date: String) {
         liveDataForViewToObserve.value = EarthData.Loading(null)
-        val apiKey : String = BuildConfig.NASA_API_KEY
+        val apiKey: String = BuildConfig.NASA_API_KEY
         if (apiKey.isBlank()) {
             EarthData.Error(Throwable("You need api key!"))
         } else {

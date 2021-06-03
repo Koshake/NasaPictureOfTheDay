@@ -10,27 +10,28 @@
         <item name="colorSecondaryVariant">@color/color_dark_green</item>
         <item name="android:textColorPrimary">@android:color/black</item>
         <item name="android:textColorSecondary">@color/color_dark_gray</item>
-        <item name="indicator_active_color">@color/color_indigo</item>
-        <item name="indicator_passive_color">@color/color_light_blue</item>
+        <item name="android:textColor">@color/color_dark_gray</item>
         <item name="image_info_color">@color/color_light_blue</item>
         <item name="earth_card_background">@color/color_milk_white</item>
         <item name="note_background">@color/color_milk_white</item>
         <item name="note_selected_background">@color/color_light_gray</item>
         <item name="android:textAppearanceMedium">@style/MyTextAppearanceMedium</item>
         <item name="android:textAppearanceSmall">@style/MyTextAppearanceSmall</item>
+        <item name="icon_color">@android:color/black</item>
     </style>
 
     <style name="AppTheme.AppThemeYellow">
-        <item name="colorPrimary">@color/color_yellow</item>
-        <item name="colorPrimaryDark">@color/color_orange</item>
+        <item name="colorPrimary">@color/color_orange</item>
+        <item name="colorPrimaryDark">@color/color_dark_orange</item>
         <item name="colorAccent">@color/color_green</item>
         <item name="colorSecondary">@color/color_dark_orange</item>
         <item name="colorSecondaryVariant">@color/color_dark_yellow</item>
+        <item name="colorOnSurface">@color/color_dark_yellow_2</item>
         <item name="appBarTint">@color/color_orange</item>
-        <item name="indicator_active_color">@color/color_lime</item>
-        <item name="indicator_passive_color">@color/color_gray</item>
         <item name="image_info_color">@color/color_yellow</item>
         <item name="earth_card_background">@color/color_light_yellow</item>
+        <item name="icon_color">@android:color/black</item>
+        <item name="edit_text_hint_color">@color/color_orange</item>
     </style>
     <style name="AppTheme.AppThemeBlue">
         <item name="colorPrimary">@color/color_blue</item>
@@ -38,20 +39,25 @@
         <item name="colorAccent">@color/color_light_purple</item>
         <item name="colorSecondary">@color/color_sky_blue</item>
         <item name="colorSecondaryVariant">@color/color_dark_green</item>
+        <item name="colorOnSurface">@color/color_dark_blue</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
         <item name="appBarTint">@color/color_dark_blue</item>
         <item name="earth_card_background">@color/color_light_sky_blue</item>
+        <item name="icon_color">@android:color/white</item>
+        <item name="edit_text_hint_color">@color/color_blue</item>
     </style>
 
-    <style name="AppThemeFancy" parent="AppTheme.AppThemeBlue">
-        <item name="colorPrimary">@color/color_fucsia</item>
+    <style name="AppThemeFancy" parent="AppTheme">
+        <item name="colorPrimary">@color/color_light_purple</item>
         <item name="colorPrimaryDark">@color/color_purple</item>
         <item name="colorSecondary">@color/color_pig</item>
         <item name="colorAccent">@color/color_dark_purple</item>
+        <item name="colorOnSurface">@color/color_dark_purple</item>
         <item name="appBarTint">@color/color_light_purple</item>
-        <item name="indicator_active_color">@color/color_fucsia</item>
-        <item name="indicator_passive_color">@color/color_light_purple</item>
         <item name="image_info_color">@color/color_pig</item>
         <item name="earth_card_background">@color/color_light_pink</item>
+        <item name="icon_color">@android:color/black</item>
+        <item name="edit_text_hint_color">@color/color_pig</item>
         <item name="shapeAppearanceSmallComponent">@style/AppShapeAppearance.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/AppShapeAppearance.MediumComponent</item>
     </style>
@@ -65,11 +71,11 @@
         <item name="cornerFamily">cut</item>
         <item name="cornerSize">2dp</item>
     </style>
-
     <style name="MyTextAppearanceMedium" parent="TextAppearance.AppCompat">
         <item name="fontFamily">@font/abril_fatface</item>
     </style>
     <style name="MyTextAppearanceSmall" parent="TextAppearance.AppCompat">
         <item name="fontFamily">@font/donegal_one</item>
     </style>
+
 </resources>
