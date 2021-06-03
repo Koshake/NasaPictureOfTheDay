@@ -16,6 +16,8 @@
         <item name="earth_card_background">@color/color_milk_white</item>
         <item name="note_background">@color/color_milk_white</item>
         <item name="note_selected_background">@color/color_light_gray</item>
+        <item name="android:textAppearanceMedium">@style/MyTextAppearanceMedium</item>
+        <item name="android:textAppearanceSmall">@style/MyTextAppearanceSmall</item>
     </style>
 
     <style name="AppTheme.AppThemeYellow">
@@ -62,5 +64,12 @@
     <style name="AppShapeAppearance.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">cut</item>
         <item name="cornerSize">2dp</item>
+    </style>
+
+    <style name="MyTextAppearanceMedium" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/abril_fatface</item>
+    </style>
+    <style name="MyTextAppearanceSmall" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/donegal_one</item>
     </style>
 </resources>
