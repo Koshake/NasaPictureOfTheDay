@@ -128,4 +128,14 @@
         <item name="android:layout_marginTop">@dimen/text_margin</item>
     </style>
 
+    <style name="TextViewStyle" parent="android:Widget.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/image_info_color</item>
+        <item name="android:paddingStart">@dimen/text_title_padding_start</item>
+        <item name="android:paddingEnd">@dimen/text_title_padding_end</item>
+        <item name="android:paddingBottom">@dimen/text_title_padding_bottom</item>
+        <item name="android:textSize">@dimen/info_text_size</item>
+    </style>
+
 </resources>

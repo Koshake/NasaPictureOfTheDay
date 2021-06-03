@@ -57,13 +57,13 @@
                 android:id="@+id/title_view"
                 style="@style/TextViewStyle"
                 app:layout_constraintBottom_toBottomOf="@+id/image_view"
-                app:layout_constraintEnd_toStartOf="@+id/image_view" />
+                app:layout_constraintStart_toStartOf="@+id/image_view" />
 
             <TextView
                 android:id="@+id/data_view"
                 style="@style/TextViewStyle"
                 app:layout_constraintTop_toTopOf="@+id/image_view"
-                app:layout_constraintStart_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="@+id/image_view" />
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipGroup"
