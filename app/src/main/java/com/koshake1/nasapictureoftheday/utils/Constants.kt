@@ -19,3 +19,8 @@ enum class Themes(val themeNum: Int) {
     BLUE(2),
     FANCY(3),
 }
+
+const val SAVING_ERROR = "Error while saving!"
+const val SAVING_SUCCESS = "Successfully saved!"
+const val DELETE_ERROR = "Error while deleting!"
+const val DELETE_SUCCESS = "Successfully deleting!"
