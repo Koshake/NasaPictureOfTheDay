@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <dimen name="medium_8">8dp</dimen>
+    <dimen name="medium_16">16dp</dimen>
+
     <dimen name="main_view_padding">10dp</dimen>
 
     <dimen name="bottom_sheet_line_padding">10dp</dimen>
@@ -27,9 +31,23 @@
     <dimen name="text_margin">2dp</dimen>
     <dimen name="text_size">16sp</dimen>
     <dimen name="info_text_size">18sp</dimen>
+    <dimen name="add_note_text_size">24sp</dimen>
 
     <dimen name="text_title_padding_start">16dp</dimen>
     <dimen name="text_title_padding_end">16dp</dimen>
     <dimen name="text_title_padding_top">3dp</dimen>
     <dimen name="text_title_padding_bottom">3dp</dimen>
+    <dimen name="earth_info_margin_top">60dp</dimen>
+    <dimen name="earth_info_padding_left">10dp</dimen>
+
+    <dimen name="earth_card_margin">10dp</dimen>
+    <dimen name="earth_corner_radius">10dp</dimen>
+    <dimen name="earth_elevation">5dp</dimen>
+
+    <dimen name="note_margin">8dp</dimen>
+    <dimen name="note_fab_margin_bottom">8dp</dimen>
+    <dimen name="note_item_margin">4dp</dimen>
+    <dimen name="note_text_margin">8dp</dimen>
+
+    <dimen name="note_layout_margin">@dimen/medium_8</dimen>
 </resources>

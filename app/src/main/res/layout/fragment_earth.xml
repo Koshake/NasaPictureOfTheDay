@@ -5,23 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/earth_image"
-        android:layout_width="match_parent"
+    <ProgressBar
+        android:id="@+id/progressBarEarth"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/bg_earth"
+        android:layout_gravity="center"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/image_description"
-        style="@style/EarthTextViewStyle"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_earth"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/earth_image"/>
+        app:layout_constraintTop_toBottomOf="@+id/progressBarEarth" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

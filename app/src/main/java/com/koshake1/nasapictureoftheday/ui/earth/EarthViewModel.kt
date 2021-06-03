@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.koshake1.nasapictureoftheday.BuildConfig
-import com.koshake1.nasapictureoftheday.data.EarthData
+import com.koshake1.nasapictureoftheday.data.earth.EarthData
 import com.koshake1.nasapictureoftheday.retrofit.data.*
 import retrofit2.Call
 import retrofit2.Callback

@@ -4,4 +4,9 @@
     <attr name="indicator_active_color" format="reference"/>
     <attr name="indicator_passive_color" format="reference"/>
     <attr name="image_info_color" format="reference"/>
+    <attr name="earth_image_width" format="reference"/>
+    <attr name="earth_image_height" format="reference"/>
+    <attr name="earth_card_background" format="reference"/>
+    <attr name="note_background" format="reference"/>
+    <attr name="note_selected_background" format="reference"/>
 </resources>

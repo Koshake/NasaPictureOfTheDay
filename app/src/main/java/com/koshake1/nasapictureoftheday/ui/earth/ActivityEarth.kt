@@ -1,16 +1,11 @@
 package com.koshake1.nasapictureoftheday.ui.earth
 
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.koshake1.nasapictureoftheday.R
-import com.koshake1.nasapictureoftheday.ui.settings.SettingsActivity
 import com.koshake1.nasapictureoftheday.utils.*
 import kotlinx.android.synthetic.main.activity_earth.*
-import kotlinx.android.synthetic.main.fragment_settings.*
 
 class ActivityEarth : AppCompatActivity() {
 

@@ -30,6 +30,10 @@
         <item name="navigationIcon">@drawable/ic_arrow_white</item>
     </style>
 
+    <style name="app_bar_style_note" parent="app_bar_style">
+        <item name="navigationIcon">@drawable/ic_arrow_white</item>
+    </style>
+
     <style name="app_bar_style_fancy" parent="app_bar_style">
         <item name="backgroundTint">@color/color_light_purple</item>
     </style>
@@ -125,7 +129,8 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_marginTop">@dimen/text_margin</item>
+        <item name="android:layout_marginTop">@dimen/earth_info_margin_top</item>
+        <item name="android:paddingEnd">@dimen/earth_info_padding_left</item>
     </style>
 
     <style name="TextViewStyle" parent="android:Widget.TextView">
@@ -136,6 +141,22 @@
         <item name="android:paddingEnd">@dimen/text_title_padding_end</item>
         <item name="android:paddingBottom">@dimen/text_title_padding_bottom</item>
         <item name="android:textSize">@dimen/info_text_size</item>
+    </style>
+
+    <style name="NoteTextView" parent="android:Widget.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/add_note_text_size</item>
+    </style>
+
+    <style name="EarthCardViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">@dimen/earth_card_margin</item>
+        <item name="cardCornerRadius">@dimen/earth_corner_radius</item>
+        <item name="cardElevation">@dimen/earth_elevation</item>
+        <item name="cardBackgroundColor">?attr/earth_card_background</item>
     </style>
 
 </resources>
