@@ -2,6 +2,7 @@ package com.koshake1.nasapictureoftheday.ui.notes
 
 import androidx.lifecycle.ViewModel
 import com.koshake1.nasapictureoftheday.data.notes.NotesData
+import com.koshake1.nasapictureoftheday.data.notes.NotesRepository
 import com.koshake1.nasapictureoftheday.data.notes.NotesRepositoryImpl
 import com.koshake1.nasapictureoftheday.utils.DELETE_ERROR
 import com.koshake1.nasapictureoftheday.utils.DELETE_SUCCESS
@@ -9,7 +10,7 @@ import com.koshake1.nasapictureoftheday.utils.SAVING_ERROR
 import com.koshake1.nasapictureoftheday.utils.SAVING_SUCCESS
 
 
-class NoteViewModel(var note: NotesData?) : ViewModel() {
+class NoteViewModel(private val notesRepository: NotesRepository, var note: NotesData?) : ViewModel() {
 
     private var showErrorMessage : String? = null
 
@@ -23,23 +24,23 @@ class NoteViewModel(var note: NotesData?) : ViewModel() {
 
     fun saveNote() {
         note?.let {
+            showErrorMessage = SAVING_SUCCESS
             try {
-                NotesRepositoryImpl.addOrReplaceNote(it)
+                notesRepository.addOrReplaceNote(it)
             } catch (th: Throwable) {
                 showErrorMessage = SAVING_ERROR
             }
-            showErrorMessage = SAVING_SUCCESS
         }
     }
 
     fun deleteNote() {
         note?.let {
+            showErrorMessage = DELETE_SUCCESS
             try {
-                NotesRepositoryImpl.deleteNote(it)
+                notesRepository.deleteNote(it)
             } catch (th: Throwable) {
                 showErrorMessage = DELETE_ERROR
             }
-            showErrorMessage = DELETE_SUCCESS
         }
     }
 
@@ -49,7 +50,7 @@ class NoteViewModel(var note: NotesData?) : ViewModel() {
         super.onCleared()
 
         note?.let {
-            NotesRepositoryImpl.addOrReplaceNote(it)
+            notesRepository.addOrReplaceNote(it)
         }
     }
 

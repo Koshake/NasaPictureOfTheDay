@@ -4,13 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.transition.TransitionManager
 import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.koshake1.nasapictureoftheday.R
@@ -21,6 +18,8 @@ import com.koshake1.nasapictureoftheday.ui.notes.adapter.NotesAdapter
 import com.koshake1.nasapictureoftheday.ui.notes.adapter.OnStartDragListener
 import com.koshake1.nasapictureoftheday.ui.settings.SettingsActivity
 import kotlinx.android.synthetic.main.fragment_note_main.*
+import org.koin.android.ext.android.inject
+import org.koin.android.scope.currentScope
 
 class NotesFragment : Fragment(R.layout.fragment_note_main) {
 
@@ -29,11 +28,9 @@ class NotesFragment : Fragment(R.layout.fragment_note_main) {
         fun newInstance() = NotesFragment()
     }
 
-    private val notesViewModel by lazy(LazyThreadSafetyMode.NONE) {
-        ViewModelProvider(this).get(
-            NotesViewModel::class.java
-        )
-    }
+    lateinit var notesViewModel : NotesViewModel
+
+    private val notesRepository : NotesRepositoryImpl by inject()
 
     private lateinit var itemTouchHelper: ItemTouchHelper
 
@@ -42,8 +39,10 @@ class NotesFragment : Fragment(R.layout.fragment_note_main) {
 
         setBottomBar(view)
 
+        initViewModel()
+
         val adapter =
-            NotesAdapter({ navigateToNote(it) }, object : OnStartDragListener {
+            NotesAdapter(notesRepository, { navigateToNote(it) }, object : OnStartDragListener {
                 override fun onStartDrag(viewHolder: RecyclerView.ViewHolder) {
                     itemTouchHelper.startDrag(viewHolder)
                 }
@@ -85,14 +84,14 @@ class NotesFragment : Fragment(R.layout.fragment_note_main) {
             }
         })
 
-        if (NotesRepositoryImpl.getListForNotify().isNotEmpty())
+        if (notesRepository.getListForNotify().isNotEmpty())
             textFirstNote.visibility = View.GONE
     }
 
     override fun onResume() {
         super.onResume()
         Log.d(TAG, "OnResume Notes Fragment")
-        if (NotesRepositoryImpl.getListForNotify().isEmpty()) {
+        if (notesRepository.getListForNotify().isEmpty()) {
             textFirstNote.visibility = View.VISIBLE
         } else {
             textFirstNote.visibility = View.GONE
@@ -130,5 +129,10 @@ class NotesFragment : Fragment(R.layout.fragment_note_main) {
         bottom_app_bar_note.setNavigationOnClickListener {
             (activity as AppCompatActivity)?.onBackPressed()
         }
+    }
+
+    private fun initViewModel() {
+        val model: NotesViewModel by currentScope.inject()
+        notesViewModel = model
     }
 }

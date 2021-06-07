@@ -202,6 +202,7 @@ class PictureOfTheDayFragment : Fragment() {
                 when (it) {
                     chipToday -> viewModel.getData(LocalDate.now().toString())
                     chipYesterday -> viewModel.getData(LocalDate.now().minusDays(1).toString())
+                    else -> Unit
                 }
             }
         }
