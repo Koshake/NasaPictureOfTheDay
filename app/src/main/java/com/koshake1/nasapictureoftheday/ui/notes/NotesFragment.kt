@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.koshake1.nasapictureoftheday.R
 import com.koshake1.nasapictureoftheday.data.notes.NotesData
 import com.koshake1.nasapictureoftheday.data.notes.NotesRepositoryImpl
+import com.koshake1.nasapictureoftheday.di.injectDependencies
 import com.koshake1.nasapictureoftheday.ui.notes.adapter.ItemTouchHelperCallback
 import com.koshake1.nasapictureoftheday.ui.notes.adapter.NotesAdapter
 import com.koshake1.nasapictureoftheday.ui.notes.adapter.OnStartDragListener
@@ -37,7 +38,7 @@ class NotesFragment : Fragment(R.layout.fragment_note_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setBottomBar(view)
+        //setBottomBar(view)
 
         initViewModel()
 

@@ -1,12 +1,14 @@
 package com.koshake1.nasapictureoftheday.ui.picture
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.transition.TransitionManager
 import android.util.Log
 import android.view.*
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -21,7 +23,7 @@ import com.koshake1.nasapictureoftheday.ui.MainActivity
 import com.koshake1.nasapictureoftheday.ui.earth.ActivityEarth
 import com.koshake1.nasapictureoftheday.ui.notes.NotesActivity
 import com.koshake1.nasapictureoftheday.ui.settings.SettingsActivity
-import com.koshake1.nasapictureoftheday.utils.toast
+import com.koshake1.nasapictureoftheday.utils.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.main_fragment.*
@@ -42,16 +44,10 @@ class PictureOfTheDayFragment : Fragment() {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        Log.d(TAG, "POD onActivity created ")
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.d(TAG, "POD onCreate view ")
         injectDependencies()
         initViewModel()
         return inflater.inflate(R.layout.main_fragment_start, container, false)
@@ -60,13 +56,14 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG, "POD onViewCreated ")
+
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
         input_layout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse("https://en.wikipedia.org/wiki/${input_edit_text.text.toString()}")
             })
         }
-        setBottomAppBar(view)
+        //setBottomAppBar(view)
         setChips()
     }
 

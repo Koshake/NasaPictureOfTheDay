@@ -4,18 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.core.widget.addTextChangedListener
 import com.koshake1.nasapictureoftheday.R
 import com.koshake1.nasapictureoftheday.data.notes.NotesData
-import com.koshake1.nasapictureoftheday.ui.picture.PictureOfTheDayViewModel
 import com.koshake1.nasapictureoftheday.utils.hideKeyboard
 import kotlinx.android.synthetic.main.fragment_note_add.*
 import org.koin.android.scope.currentScope
-import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import java.time.LocalDate
 
 class NoteFragment : Fragment(R.layout.fragment_note_add) {
 

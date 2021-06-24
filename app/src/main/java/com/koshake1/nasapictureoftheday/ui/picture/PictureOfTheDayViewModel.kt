@@ -1,8 +1,5 @@
 package com.koshake1.nasapictureoftheday.ui.picture
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.koshake1.nasapictureoftheday.BaseViewModel
 import com.koshake1.nasapictureoftheday.BuildConfig
 import com.koshake1.nasapictureoftheday.data.POD.PictureOfTheDayData

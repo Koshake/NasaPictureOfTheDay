@@ -1,6 +1,5 @@
 package com.koshake1.nasapictureoftheday.viewmodel
 
-import android.graphics.ColorSpace.match
 
 import com.koshake1.nasapictureoftheday.data.notes.NotesData
 import com.koshake1.nasapictureoftheday.data.notes.NotesRepositoryImpl
@@ -11,7 +10,6 @@ import com.koshake1.nasapictureoftheday.utils.SAVING_ERROR
 import com.koshake1.nasapictureoftheday.utils.SAVING_SUCCESS
 import com.nhaarman.mockito_kotlin.verify
 import org.junit.*
-import org.mockito.ArgumentMatchers.any
 import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.never
