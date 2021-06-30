@@ -3,6 +3,8 @@ package com.koshake1.nasapictureoftheday.data.notes
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlin.random.Random
 
 private val idRandom = Random(0)

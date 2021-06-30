@@ -38,7 +38,7 @@ class NotesFragment : Fragment(R.layout.fragment_note_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //setBottomBar(view)
+        setBottomBar(view)
 
         initViewModel()
 
@@ -122,13 +122,15 @@ class NotesFragment : Fragment(R.layout.fragment_note_main) {
     }
 
     private fun setBottomBar(view: View) {
-        val context = activity as NotesActivity
-        context.setSupportActionBar(view.findViewById(R.id.bottom_app_bar_note))
-        bottom_app_bar_note.replaceMenu(R.menu.menu_bottom_bar_notes)
-        setHasOptionsMenu(true)
-        context.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        bottom_app_bar_note.setNavigationOnClickListener {
-            (activity as AppCompatActivity)?.onBackPressed()
+        if (activity is NotesActivity) {
+            val context = activity as NotesActivity
+            context.setSupportActionBar(view.findViewById(R.id.bottom_app_bar_note))
+            bottom_app_bar_note.replaceMenu(R.menu.menu_bottom_bar_notes)
+            setHasOptionsMenu(true)
+            context.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            bottom_app_bar_note.setNavigationOnClickListener {
+                (activity as AppCompatActivity)?.onBackPressed()
+            }
         }
     }
 

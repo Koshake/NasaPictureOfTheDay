@@ -3,46 +3,45 @@ package com.koshake1.nasapictureoftheday.ui.earth
 import com.koshake1.nasapictureoftheday.BaseViewModel
 import com.koshake1.nasapictureoftheday.BuildConfig
 import com.koshake1.nasapictureoftheday.data.earth.EarthData
-import com.koshake1.nasapictureoftheday.retrofit.data.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.koshake1.nasapictureoftheday.repository.RepositoryEarth
+import kotlinx.coroutines.*
 
 class EarthViewModel(
-    private val retrofitImpl: PODRetrofitImpl
+    private val repository: RepositoryEarth
 ) : BaseViewModel<EarthData>() {
 
-    override fun sendServerRequest(date: String) {
+
+    override fun handleServerRequest(date: String) {
         liveDataForViewToObserve.value = EarthData.Loading(null)
         val apiKey: String = BuildConfig.NASA_API_KEY
         if (apiKey.isBlank()) {
-            EarthData.Error(Throwable("You need api key!"))
-        } else {
-            retrofitImpl.getRetrofitImpl().getEarthDate(date, apiKey).enqueue(object :
-                Callback<List<EarthServerResponseData>> {
-                override fun onResponse(
-                    call: Call<List<EarthServerResponseData>>,
-                    response: Response<List<EarthServerResponseData>>
-                ) {
-                    if (response.isSuccessful && response.body() != null) {
-                        liveDataForViewToObserve.value =
-                            EarthData.Success(response.body()!!)
-                    } else {
-                        val message = response.message()
-                        if (message.isNullOrEmpty()) {
-                            liveDataForViewToObserve.value =
-                                EarthData.Error(Throwable("Unidentified error"))
-                        } else {
-                            liveDataForViewToObserve.value =
-                                EarthData.Error(Throwable(message))
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<List<EarthServerResponseData>>, t: Throwable) {
-                    liveDataForViewToObserve.value = EarthData.Error(t)
-                }
-            })
+            liveDataForViewToObserve.value =
+                EarthData.Error(Throwable("You need api key!"))
+            return
+        }
+        viewModelCoroutineScope.launch {
+            val result = repository.sendServerRequest(date, apiKey)
+            if (result.isEmpty()) {
+                EarthData.Error(Throwable("Response is null or unsuccessful!"))
+            } else {
+                liveDataForViewToObserve.value =
+                    EarthData.Success(result)
+            }
         }
     }
+
+    override fun handleError(error: Throwable) {
+        liveDataForViewToObserve.value =
+            EarthData.Error(
+                Throwable(
+                    error.message ?: "Response is null or unsuccessful!"
+                )
+            )
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelCoroutineScope.coroutineContext.cancelChildren()
+    }
+
 }

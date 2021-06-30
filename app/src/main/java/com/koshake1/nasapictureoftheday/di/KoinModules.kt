@@ -3,7 +3,12 @@ package com.koshake1.nasapictureoftheday.di
 import com.koshake1.nasapictureoftheday.data.notes.NotesData
 import com.koshake1.nasapictureoftheday.data.notes.NotesRepository
 import com.koshake1.nasapictureoftheday.data.notes.NotesRepositoryImpl
+import com.koshake1.nasapictureoftheday.repository.RepositoryEarth
+import com.koshake1.nasapictureoftheday.repository.RepositoryEarthImpl
+import com.koshake1.nasapictureoftheday.repository.RepositoryPOD
+import com.koshake1.nasapictureoftheday.repository.RepositoryPODImpl
 import com.koshake1.nasapictureoftheday.retrofit.data.PODRetrofitImpl
+import com.koshake1.nasapictureoftheday.retrofit.data.RetrofitImpl
 import com.koshake1.nasapictureoftheday.ui.earth.EarthFragment
 import com.koshake1.nasapictureoftheday.ui.earth.EarthViewModel
 import com.koshake1.nasapictureoftheday.ui.notes.NoteFragment
@@ -28,10 +33,19 @@ val application = module {
 
     single {
         PODRetrofitImpl()
-    }
+    } bind RetrofitImpl::class
+
+    single {
+        RepositoryPODImpl(get())
+    } bind RepositoryPOD::class
+
+    single {
+        RepositoryEarthImpl(get())
+    } bind RepositoryEarth::class
 }
 
 val pictureScreen = module {
+
     scope(named<PictureOfTheDayFragment>()) {
         viewModel {
             PictureOfTheDayViewModel(get())
@@ -40,6 +54,7 @@ val pictureScreen = module {
 }
 
 val earthScreen = module {
+
     scope(named<EarthFragment>()) {
         viewModel {
             EarthViewModel(get())
@@ -60,8 +75,8 @@ val notesScreen = module {
     }
 
     scope(named<NoteFragment>()) {
-        viewModel {
-                (note: NotesData?) -> NoteViewModel(get(), note)
+        viewModel { (note: NotesData?) ->
+            NoteViewModel(get(), note)
         }
     }
 }

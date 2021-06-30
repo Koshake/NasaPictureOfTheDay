@@ -28,6 +28,10 @@ import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.main_fragment.*
 import kotlinx.android.synthetic.main.main_fragment.chipGroup
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import org.koin.android.scope.currentScope
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.time.LocalDate
@@ -63,7 +67,7 @@ class PictureOfTheDayFragment : Fragment() {
                 data = Uri.parse("https://en.wikipedia.org/wiki/${input_edit_text.text.toString()}")
             })
         }
-        //setBottomAppBar(view)
+        setBottomAppBar(view)
         setChips()
     }
 
@@ -114,20 +118,23 @@ class PictureOfTheDayFragment : Fragment() {
             }
             is PictureOfTheDayData.Error -> {
                 toast(data.error.message)
+                Log.d(TAG, data.error.message.toString())
             }
         }
     }
 
     private fun setBottomAppBar(view: View) {
-        val context = activity as MainActivity
-        val bottomAppBar: BottomAppBar = view.findViewById(R.id.bottom_app_bar)
-        context.setSupportActionBar(bottomAppBar)
-        context.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        bottomAppBar.setNavigationIcon(R.drawable.ic_earth)
-        bottomAppBar.setNavigationOnClickListener {
-            activity?.let { startActivity(Intent(it, ActivityEarth::class.java)) }
+        if (activity is MainActivity) {
+            val context = activity as MainActivity
+            val bottomAppBar: BottomAppBar = view.findViewById(R.id.bottom_app_bar)
+            context.setSupportActionBar(bottomAppBar)
+            context.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            bottomAppBar.setNavigationIcon(R.drawable.ic_earth)
+            bottomAppBar.setNavigationOnClickListener {
+                activity?.let { startActivity(Intent(it, ActivityEarth::class.java)) }
+            }
+            setHasOptionsMenu(true)
         }
-        setHasOptionsMenu(true)
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
@@ -167,8 +174,9 @@ class PictureOfTheDayFragment : Fragment() {
     private fun initViewModel() {
         val model: PictureOfTheDayViewModel by currentScope.inject()
         viewModel = model
-        viewModel.getData(LocalDate.now().toString())
+        viewModel.subscribeToLiveData()
             .observe(viewLifecycleOwner, Observer { renderData(it) })
+        viewModel.handleServerRequest(LocalDate.now().toString())
     }
 
     private fun loadPicture(url: String?) {
@@ -197,8 +205,8 @@ class PictureOfTheDayFragment : Fragment() {
         chipGroup.setOnCheckedChangeListener { chipGroup, position ->
             chipGroup.findViewById<Chip>(position)?.let {
                 when (it) {
-                    chipToday -> viewModel.getData(LocalDate.now().toString())
-                    chipYesterday -> viewModel.getData(LocalDate.now().minusDays(1).toString())
+                    chipToday -> viewModel.handleServerRequest(LocalDate.now().toString())
+                    chipYesterday -> viewModel.handleServerRequest(LocalDate.now().minusDays(1).toString())
                     else -> Unit
                 }
             }

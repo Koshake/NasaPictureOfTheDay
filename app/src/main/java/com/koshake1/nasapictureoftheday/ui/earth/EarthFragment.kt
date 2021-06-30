@@ -47,8 +47,9 @@ class EarthFragment(private val date: String) : Fragment() {
     private fun initViewModel() {
         val model: EarthViewModel by currentScope.inject()
         viewModel = model
-        viewModel.getData(date)
+        viewModel.subscribeToLiveData()
             .observe(viewLifecycleOwner, Observer { renderData(it) })
+        viewModel.handleServerRequest(date)
     }
 
     private fun renderData(data: EarthData?) {
