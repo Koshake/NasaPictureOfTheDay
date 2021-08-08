@@ -2,12 +2,13 @@ package com.koshake1.nasapictureoftheday.retrofit.data
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
+import com.koshake1.nasapictureoftheday.retrofit.api.IPictureOfTheDayApi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.io.IOException
 
-open class RetrofitImpl {
+abstract class RetrofitImpl {
     protected val baseUrl = "https://api.nasa.gov/"
 
     val gson = GsonBuilder()
@@ -29,4 +30,6 @@ open class RetrofitImpl {
             return chain.proceed(chain.request())
         }
     }
+
+    abstract fun getRetrofitImpl() : IPictureOfTheDayApi
 }

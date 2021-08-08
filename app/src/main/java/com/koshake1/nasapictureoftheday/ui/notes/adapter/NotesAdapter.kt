@@ -19,8 +19,10 @@ import com.koshake1.nasapictureoftheday.data.notes.NotesRepositoryImpl
 import com.koshake1.nasapictureoftheday.utils.BULLET_SPAN_GAP
 import com.koshake1.nasapictureoftheday.utils.BULLET_SPAN_RADIUS
 import kotlinx.android.synthetic.main.item_note.view.*
+import org.koin.android.ext.android.inject
 
 val DIFF_UTIL: DiffUtil.ItemCallback<NotesData> = object : DiffUtil.ItemCallback<NotesData>() {
+
     override fun areItemsTheSame(oldItem: NotesData, newItem: NotesData): Boolean {
         return oldItem == newItem
     }
@@ -30,7 +32,8 @@ val DIFF_UTIL: DiffUtil.ItemCallback<NotesData> = object : DiffUtil.ItemCallback
     }
 }
 
-class NotesAdapter(val noteHandler: (NotesData) -> Unit, val dragListener: OnStartDragListener) :
+class NotesAdapter(private val notesRepository: NotesRepositoryImpl,
+                   val noteHandler: (NotesData) -> Unit, val dragListener: OnStartDragListener) :
     ListAdapter<NotesData, NotesAdapter.NoteViewHolder>(DIFF_UTIL), ItemTouchHelperAdapter {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -42,12 +45,12 @@ class NotesAdapter(val noteHandler: (NotesData) -> Unit, val dragListener: OnSta
     }
 
     override fun onItemMove(fromPosition: Int, toPosition: Int) {
-        NotesRepositoryImpl.replaceNoteByItem(getItem(fromPosition), getItem(toPosition))
+        notesRepository.replaceNoteByItem(getItem(fromPosition), getItem(toPosition))
         notifyItemMoved(fromPosition, toPosition)
     }
 
     override fun onItemDismiss(position: Int) {
-        NotesRepositoryImpl.deleteNote(getItem(position))
+        notesRepository.deleteNote(getItem(position))
         notifyItemRemoved(position)
     }
 

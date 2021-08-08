@@ -8,20 +8,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.koshake1.nasapictureoftheday.R
 import com.koshake1.nasapictureoftheday.data.earth.EarthData
 import com.koshake1.nasapictureoftheday.retrofit.data.EarthServerResponseData
 import com.koshake1.nasapictureoftheday.ui.earth.adapter.EarthRecyclerAdapter
 import com.koshake1.nasapictureoftheday.ui.earth.adapter.OnListItemClickListener
-import com.koshake1.nasapictureoftheday.ui.picture.PictureOfTheDayFragment
-import com.koshake1.nasapictureoftheday.ui.picture.PictureOfTheDayViewModel
 import com.koshake1.nasapictureoftheday.utils.toast
 import kotlinx.android.synthetic.main.fragment_earth.*
 import org.koin.android.scope.currentScope
-import org.koin.android.viewmodel.ext.android.viewModel
-import java.time.LocalDate
 
 class EarthFragment(private val date: String) : Fragment() {
 
@@ -52,8 +47,9 @@ class EarthFragment(private val date: String) : Fragment() {
     private fun initViewModel() {
         val model: EarthViewModel by currentScope.inject()
         viewModel = model
-        viewModel.getData(date)
+        viewModel.subscribeToLiveData()
             .observe(viewLifecycleOwner, Observer { renderData(it) })
+        viewModel.handleServerRequest(date)
     }
 
     private fun renderData(data: EarthData?) {

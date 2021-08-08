@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.core.widget.addTextChangedListener
 import com.koshake1.nasapictureoftheday.R
 import com.koshake1.nasapictureoftheday.data.notes.NotesData
 import com.koshake1.nasapictureoftheday.utils.hideKeyboard
 import kotlinx.android.synthetic.main.fragment_note_add.*
+import org.koin.android.scope.currentScope
+import org.koin.core.parameter.parametersOf
 
 class NoteFragment : Fragment(R.layout.fragment_note_add) {
 
@@ -28,25 +28,19 @@ class NoteFragment : Fragment(R.layout.fragment_note_add) {
     }
 
     private val note: NotesData? by lazy(LazyThreadSafetyMode.NONE) {
-        arguments?.getParcelable(
+        arguments?.getParcelable<NotesData>(
             NOTE_KEY
         )
     }
 
-    private val viewModel by lazy(LazyThreadSafetyMode.NONE) {
-        ViewModelProvider(this, object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                return NoteViewModel(note) as T
-            }
-        }).get(
-            NoteViewModel::class.java
-        )
-    }
+    lateinit var viewModel : NoteViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setToolBar(view)
+        initViewModel()
+
         viewModel.note?.let {
             titleEt.setText(it.title)
             bodyEt.setText(it.note)
@@ -74,5 +68,13 @@ class NoteFragment : Fragment(R.layout.fragment_note_add) {
         toolbar_note.setNavigationOnClickListener {
             (activity as AppCompatActivity)?.onBackPressed()
         }
+    }
+
+    private fun initViewModel() {
+
+        val model: NoteViewModel by currentScope.inject {
+            parametersOf(note)
+        }
+        viewModel = model
     }
 }

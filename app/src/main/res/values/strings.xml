@@ -25,4 +25,8 @@
     <string name="save">Save</string>
     <string name="add_note">Create your note</string>
     <string name="add_first_note">Add your first note here!</string>
+    <string name="Saving_error">Error while saving!</string>
+    <string name="Deleting_error">Error while deleting!</string>
+    <string name="Saving_success">Successfully saved!</string>
+    <string name="Deleting_success">Successfully deleted!</string>
 </resources>
